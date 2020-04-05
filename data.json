@@ -1,7 +1,64 @@
 {
   "customers": [
-    { "id": "1", "name": "John Doe", "email": "jdoe@gmail.com", "age": 35 },
-    { "id": "2", "name": "Dave Doe", "email": "ddoe@gmail.com", "age": 44 },
-    { "id": "3", "name": "Simon Doe", "email": "sdoe@gmail.com", "age": 66 }
+    {
+      "id": "1",
+      "name": "Fake Name",
+      "email": "fake@email.com",
+      "age": 123
+    },
+    {
+      "id": "2",
+      "name": "Dave Doe",
+      "email": "ddoe@gmail.com",
+      "age": 44
+    },
+    {
+      "id": "3",
+      "name": "Simon Doe",
+      "email": "sdoe@gmail.com",
+      "age": 66
+    },
+    {
+      "name": "Harry Dude",
+      "email": "HarryPotter@pot.com",
+      "age": 22,
+      "createdTime": 1586059055157,
+      "id": "TIUII7K"
+    },
+    {
+      "name": "Harry Dude",
+      "email": "HarryPotter@pot.com",
+      "age": 22,
+      "createdTime": 1586059195121,
+      "id": "P-1UxUG"
+    },
+    {
+      "name": "Harry Dude",
+      "email": "HarryPotter@pot.com",
+      "age": 22,
+      "createdTime": 1586059196012,
+      "id": "ii-x_lD"
+    },
+    {
+      "name": "Harry Dude",
+      "email": "HarryPotter@pot.com",
+      "age": 22,
+      "createdTime": 1586059196852,
+      "id": "-CDUzhn"
+    },
+    {
+      "name": "Harry Dude",
+      "email": "HarryPotter@pot.com",
+      "age": 22,
+      "createdTime": 1586059196879,
+      "id": "VzNZyy3"
+    },
+    {
+      "name": "Harry Dude",
+      "email": "HarryPotter@pot.com",
+      "age": 22,
+      "createdTime": 1586059197693,
+      "id": "zHqscWK"
+    }
   ]
 }

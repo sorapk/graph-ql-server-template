@@ -13,11 +13,13 @@
 - npm run dev:server
 - npm run json:server
 
+### Development Servers
+
+- http://localhost:4000/graphql
+- http://localhost:3000
+
 ### Query Example
 
-<pre>
-http://localhost:4000/graphql
-</pre>
 <pre>
 {
     customer(id: "1"){
@@ -32,6 +34,22 @@ http://localhost:4000/graphql
   customerList{
     age
     name
+  }
+}
+</pre>
+<pre>
+mutation{
+  addCustomer(name:"Harry Dude", email:"HarryPotter@pot.com",age:22){
+    id,
+    name,
+    email
+  }
+}
+</pre>
+<pre>
+mutation{
+  deleteCustomer(id:"VGk5e2t"){
+    id
   }
 }
 </pre>

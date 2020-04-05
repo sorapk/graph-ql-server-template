@@ -6,6 +6,7 @@ const {
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull,
+  GraphQLFloat,
 } = require('graphql');
 
 // Test Data
@@ -23,6 +24,7 @@ const CustomerType = new GraphQLObjectType({
     name: { type: GraphQLString },
     email: { type: GraphQLString },
     age: { type: GraphQLInt },
+    createdTime: { type: GraphQLFloat },
   }),
 });
 
@@ -44,7 +46,7 @@ const RootQuery = new GraphQLObjectType({
         const res = await axios.get(
           'http://localhost:3000/customers/' + args.id
         );
-        return res.data;
+        return res;
       },
     },
     customerList: {
@@ -53,7 +55,59 @@ const RootQuery = new GraphQLObjectType({
         // return customers;
 
         const res = await axios.get('http://localhost:3000/customers/');
-        return res;
+        return res.data;
+      },
+    },
+  },
+});
+
+// Mutation
+const mutation = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addCustomer: {
+      type: CustomerType,
+      args: {
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLInt) },
+      },
+      async resolve(parentValue, args) {
+        const resp = await axios.post('http://localhost:3000/customers', {
+          name: args.name,
+          email: args.email,
+          age: args.age,
+          createdTime: Date.now(),
+        });
+        return resp.data;
+      },
+    },
+    deleteCustomer: {
+      type: CustomerType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+      },
+      async resolve(parentValue, args) {
+        const resp = await axios.delete(
+          'http://localhost:3000/customers/' + args.id
+        );
+        return resp.data;
+      },
+    },
+    editCustomer: {
+      type: CustomerType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLString) },
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        email: { type: new GraphQLNonNull(GraphQLString) },
+        age: { type: new GraphQLNonNull(GraphQLInt) },
+      },
+      async resolve(parentValue, args) {
+        const resp = await axios.patch(
+          'http://localhost:3000/customers/' + args.id,
+          args
+        );
+        return resp.data;
       },
     },
   },
@@ -61,4 +115,5 @@ const RootQuery = new GraphQLObjectType({
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
+  mutation: mutation,
 });
